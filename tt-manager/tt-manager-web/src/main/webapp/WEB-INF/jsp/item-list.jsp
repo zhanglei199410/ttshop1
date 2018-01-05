@@ -121,6 +121,7 @@
     $(function () {
         //alert(1);
         $('#itemListDg').datagrid({
+            width:50,
             toolbar:tb,
             url: 'items',
             striped: true,
@@ -129,11 +130,13 @@
             columns: [[
 //          复选框
                 {field: 'ck',checkbox: true},
-                {field: 'id', title: '商品编号'},
-                {field: 'title', title: '商品标题'},
-                {field: 'sellPoint', title: '商品卖点'},
-                {field: 'price', title: '商品价格'},
+                {field: 'id', title: '商品编号',sortable:true},
+                {field: 'title', title: '商品标题',sortable:true},
                 {field: 'catName', title: '商品分类'},
+                {field: 'created', title: '创建时间',formatter:function(value,row,index){
+                    return moment(value).format('L');
+                }},
+                {field: 'priceView', title: '商品价格'},
                 {field: 'status', title: '商品状态',formatter:function (value,row,index) {
                     switch (value){
                         case 1:
